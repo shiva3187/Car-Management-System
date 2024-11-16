@@ -1,0 +1,85 @@
+/* AddCarPage Styles */
+.add-car-container {
+    max-width: 600px;
+    margin: 80px auto 20px; /* Centered on the page */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .add-car-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2c3e50; /* Dark blue/grey */
+  }
+  
+  .add-car-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .add-car-form label {
+    font-size: 1rem;
+    color: #34495e; /* Darker grey */
+    font-weight: bold;
+  }
+  
+  .add-car-form input,
+  .add-car-form textarea,
+  .add-car-form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .add-car-form input:focus,
+  .add-car-form textarea:focus,
+  .add-car-form select:focus {
+    border-color: #1abc9c; /* Highlight border when focused */
+    outline: none;
+  }
+  
+  .add-car-form textarea {
+    resize: none; /* Prevent resizing for a clean UI */
+    height: 100px;
+  }
+  
+  .add-car-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #1abc9c; /* Green */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-car-button:hover {
+    background-color: #16a085; /* Slightly darker green on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .add-car-container {
+      padding: 15px;
+      margin: 70px 10px;
+    }
+  
+    .add-car-title {
+      font-size: 1.5rem;
+    }
+  
+    .add-car-button {
+      font-size: 1rem;
+    }
+  }
+  
