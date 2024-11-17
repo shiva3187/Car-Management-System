@@ -1,27 +1,19 @@
-import axios from 'axios';
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = "http://localhost:4000";
 
-const api = axios.create({
-  baseURL: '/api',
-  timeout: 10000,
-});
+// AUTH ENDPOINTS
+export const endpoints = {
+  SIGNUP_API: BASE_URL + "/api/users/register",
+  LOGIN_API: BASE_URL + "/api/users/login",
+}
 
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
 
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    console.error('API Error:', error.response?.data?.message || error.message);
-    return Promise.reject(error);
-  }
-);
-
-export default api;
+//ORDER ENDPOINTS
+export const car ={
+  GET_CAR: BASE_URL+"/api/car/getAllCars",
+  GET_S_CAR: BASE_URL+"/api/car/getCar",
+  UPDATE_CAR :BASE_URL+"/api/car/updateCar",
+  DELETE_CAR: BASE_URL+"/api/car/deleteCar",
+  ADD_CAR : BASE_URL+"/api/car/addcar",
+  GET_USER_CARS : BASE_URL+"/api/car/getAllUserCar"
+}

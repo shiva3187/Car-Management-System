@@ -7,7 +7,7 @@ const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
-    return res.status(400).json({ message: "Please fill all details" });
+    return res.status(400).json({ success: false, message: "Please fill all details" });
   }
 
   try {
@@ -37,7 +37,17 @@ const registerUser = async (req, res) => {
         sameSite: 'strict',
         maxAge: 86400000 // 1 day
       })
-      .json({ success: true, token, userInfo: payload, msg: 'User registered successfully' });
+      .json({
+        success: true,
+        msg: 'User registered successfully',
+        token, // Include the token in the response
+        userInfo: {
+          id: newUser._id,
+          name: newUser.name,
+          email: newUser.email,
+          role: "user"
+        }
+      });
   } catch (error) {
     console.error('Register error:', error.message);
     res.status(500).json({ success: false, msg: 'Server error' });
@@ -49,7 +59,7 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({ message: "Please fill all details" });
+    return res.status(400).json({ success: false, message: "Please fill all details" });
   }
 
   try {
@@ -73,7 +83,17 @@ const loginUser = async (req, res) => {
         sameSite: 'strict',
         maxAge: 86400000 // 1 day
       })
-      .json({ success: true, userInfo: payload, msg: 'Login successful' });
+      .json({
+        success: true,
+        msg: 'Login successful',
+        token, // Include the token in the response
+        userInfo: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          role: user.role
+        }
+      });
   } catch (error) {
     console.error('Login error:', error.message);
     res.status(500).json({ success: false, msg: 'Server error' });
